@@ -1,1 +1,8 @@
 <h1>ARTICLES</h1>
+<button>Click me nao!</button>
+<ul class="article_list">
+  {{#each articles}}
+    <li>{{this.author}}</li>
+    <li>{{this.desc}}</li>
+  {{/each}}
+</ul>

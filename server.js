@@ -5,7 +5,6 @@ const articles = require('./routes/articles')
 const products = require('./routes/products')
 const app = express();
 
-
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
