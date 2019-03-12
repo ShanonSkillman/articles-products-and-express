@@ -3,25 +3,26 @@ class Articles {
         this.articles = [];
         this.idNum = 1;
         this.initArticles();
+        this.success = false;
     }
     initArticles() {
         this.articles.push({
             id: this.idNum,
-            name: "The Legend",
+            title: "The Legend",
             desc: "Jim Morrison's epic plunge into greatness & the end",
             author: "Al Roker",
         })
         this.idNum++;
         this.articles.push({
             id: this.idNum,
-            name: "Freak Out",
+            title: "Freak Out",
             desc: "How the band CHIC brought down the house at Studio 54",
             author: "Jack Nicholson",
         })
         this.idNum++;
         this.articles.push({
             id: this.idNum,
-            name: "Straight From the Underground",
+            title: "Straight From the Underground",
             desc: "NWA's fast and furious ride",
             author: "Pharrell Williams",
         })
@@ -32,8 +33,8 @@ class Articles {
     }
     getArticleById(id) {
         this.articles.forEach((article) => {
-            if (article.id === id) {
-                return article;
+            if (articles.id === id) {
+                return articles;
             }
         });
     }
@@ -43,10 +44,28 @@ class Articles {
         this.idNum++;
         return newArticle;
     }
-    deleteArticleById(id) {
+    editArticle(title, newTitle, body, author, urlTitle) {
+        this.success = false;
+        this.articles.forEach(article => {
+            console.log(article)
+            if (article.title === title) {
+                article.title = newTitle;
+                article.author = author;
+                article.body = body;
+                article.urlTitle = urlTitle;
+                console.log("dsadsa", title)
+                this.success = true;
+                return this.success;
+            } else {
+                console.log("dfaffffffa")
+                return this.success;
+            }
+        });
+    }
+    deleteArticleByTitle(title) {
         this.articles.slice().forEach((article, idx) => {
-            if (article.id === id) {
-                this.articles.splice(0, 1);
+            if (article.title === title) {
+                this.articles.splice(idx, 1);
             }
         });
     }

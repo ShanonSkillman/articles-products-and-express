@@ -18,6 +18,11 @@ app.set('view engine', 'hbs');
 app.use('/articles', articles)
 app.use('/products', products)
 
+app.get('/', (req, res) => {
+    res.render("homebase")
+})
+
 app.listen(8080, () => {
     console.log("app listening on port 8080")
 });
+

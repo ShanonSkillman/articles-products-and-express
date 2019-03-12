@@ -1,6 +1,6 @@
 class Products {
     constructor() {
-        this.articles = [];
+        this.products = [];
         this.idNum = 1;
         this.initProducts();
     }
