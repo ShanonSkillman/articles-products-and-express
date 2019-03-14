@@ -44,7 +44,7 @@ class Products {
         return newProduct;
     }
     deleteProductsById(id) {
-        this.products.slice().forEach((product, idx) => {
+        this.products.slice().forEach((product, id) => {
             if (product.id === id) {
                 this.products.splice(0, 1);
             }

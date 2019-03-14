@@ -52,6 +52,7 @@ require('dotenv').config();
 module.exports = {
   client: 'pg',
   connection: {
+    port: process.env.POSTGRES_HOST_PORT = 5432,
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD

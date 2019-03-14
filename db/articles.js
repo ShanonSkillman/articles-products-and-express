@@ -9,21 +9,21 @@ class Articles {
         this.articles.push({
             id: this.idNum,
             title: "The Legend",
-            desc: "Jim Morrison's epic plunge into greatness & the end",
+            body: "Jim Morrison's epic plunge into greatness & the end",
             author: "Al Roker",
         })
         this.idNum++;
         this.articles.push({
             id: this.idNum,
             title: "Freak Out",
-            desc: "How the band CHIC brought down the house at Studio 54",
+            body: "How the band CHIC brought down the house at Studio 54",
             author: "Jack Nicholson",
         })
         this.idNum++;
         this.articles.push({
             id: this.idNum,
             title: "Straight From the Underground",
-            desc: "NWA's fast and furious ride",
+            body: "NWA's fast and furious ride",
             author: "Pharrell Williams",
         })
         this.idNum++;
@@ -38,8 +38,8 @@ class Articles {
             }
         });
     }
-    createArticle(title, author, desc) {
-        const newArticle = { id: this.idNum, title: title, author: author, desc: desc };
+    createArticle(title, author, body) {
+        const newArticle = { id: this.idNum, title: title, author: author, body: body };
         this.articles.push(newArticle)
         this.idNum++;
         return newArticle;

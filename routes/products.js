@@ -21,16 +21,28 @@ router.post('/', function (req, res) {
         price: data.price,
         inventory: data.inventory
     }).then(() => {
-        res.redirect('products')
+        res.redirect('/products/')
     })
     // const data = req.body;
     // const newProduct = db.createProduct(data.name, data.price, data.inventory);
     // res.json(newProduct);
 });
 
-// router.delete('/:name', (req, res) => {
-//     let name = req.body.name;
-//     console.log("name", name)
-//     db.deleteProductsById();
-// })
+router.delete('/:name', (req, res) => {
+    let productName = req.name;
+    // console.log("yo-yo ma", req.params);
+    knex.select()
+        .from('products')
+        .where('name', productName)
+        .then(products => {
+            let obj = products[0];
+            res.render("deleteProducts", obj);
+        });
+
+    // let name = req.body.name;
+    // console.log("name", name)
+    // db.deleteProductsById(name);
+    // console.log(name);
+    // res.send("yaaaay you successfully deleted " + name);
+});
 module.exports = router

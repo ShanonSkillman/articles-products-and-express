@@ -4,22 +4,22 @@ const db = require('../db/articles');
 const knex = require('../database');
 
 router.get('/', function (req, res) {
-    // knex.select('*').from('articles')
-    //     .then((articles) => {
-    //         console.log(articles);
-    //         res.render('articles', { articles })
-    // });
-    const articles = db.getAllArticles();
-    const data = { articles: articles };
-    res.render('articles', data);
+    knex.select('*').from('articles')
+        .then((articles) => {
+            console.log(articles);
+            res.render('articles', { articles })
+        });
+    // const articles = db.getAllArticles();
+    // const data = { articles: articles };
+    // res.render('articles', data);
 })
 
 router.post('/', function (req, res) {
-    let data = req.body;
+    let newArtPost = req.desc;
     knex('articles').insert({
-        title: data.title,
-        author: data.author,
-        desc: data.desc
+        title: newArtPost.title,
+        author: newArtPost.author,
+        body: newArtPost.body
     }).then(() => {
         res.redirect('articles')
     })
@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
 router.put('/:title', (req, res) => {
     let title = req.body.title;
     let newTitle = req.body.newTitle;
-    let body = req.body.body;
+    let body = req.body.desc;
     let author = req.body.author;
     let urlTitle = req.body.urlTitle;
 
@@ -50,8 +50,24 @@ router.put('/:title', (req, res) => {
 })
 
 router.delete('/:title', (req, res) => {
-    let title = req.body.title;
-    console.log("title", title)
-    db.deleteArticleByTitle();
-})
+    let articleTitle = req.desc.title;
+    console.log(req.body.title)
+    // console.log("yo-yo pa", req.params.title);
+    knex('articles')
+        .select('title', 'author', 'body')
+        .where('title', articleTitle)
+        .delete()
+        .then(res.redirect("/articles"));
+});
+
+
+
+//  .then(articles => {
+//      let obj = articles[0];
+//      res.render("deleteArticles", obj);
+// let title = req.body.title;
+// console.log("title", title)
+// db.deleteArticleByTitle(title);
+// console.log(title);
+// res.send("yah youuus ya successfully deleted " + title);
 module.exports = router
